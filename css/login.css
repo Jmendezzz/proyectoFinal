@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    font-family: "Play", sans-serif;
+}
+nav{
+    width: 100%;
+    height: 100px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+nav img{
+    width: 170px;
+    height: 170px;
+    z-index: 1000;
+}
+body{
+    background-image: url("/images/login.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size:cover;
+
+}
+.body{
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+    background-color: white;
+    width: 30%;
+    height: 60vh;
+    border-radius: 3em;
+}
+.form h2{
+    font-size: 60px;
+    color: green;
+}
+.form input{
+    margin: 10px;
+    border: none;
+    border-bottom: 1px solid green;
+    width: 100%;
+    border-radius: 3em;
+    padding: 10px;
+    transition: all 1s;
+}
+input:focus{
+    outline: none;
+    border-bottom: 1px solid rgb(4, 57, 4); 
+    transform: scale(1.05);
+    
+}
+button{
+    margin-top: 20px;
+    background-color: green;
+    font-size: 20px;
+    border:none;
+    color: white;
+    border-radius: 3em;
+    padding: 5px;
+    width: 250px;
+    transition: all 1s;
+}
+button:hover{
+    background-color: transparent;
+    color:black;
+    outline: 1px solid green;
+    cursor: pointer;
+}
+.active{
+    height: auto;
+    width: 300px;
+}
+.imagen{
+    width: 100px;
+    height: 100px;
+}
+.icons{
+    width: 22px;
+    height: 22px;
+}
+.row-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.error{
+
+    outline: 1px solid red;
+
+}
