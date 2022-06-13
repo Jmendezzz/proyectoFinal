@@ -8,7 +8,7 @@ class Productos {
     }
 }
 
-let arrayProductos = [];
+export let arrayProductos = [];
 const botonEnviar = document.getElementById("send-button");
 
 const clearInputs = () => {
@@ -83,7 +83,13 @@ const printProductos = () => {
     })
 }
 
-
+export const createDivProduct = (button)=>{
+    button.addEventListener("click",()=>{
+        let botonId= button.id;
+        return botonId.slice(-1);   
+        
+    })
+}
 botonEnviar.addEventListener("click", () => {
     if (comprobarDatos()) {
         setClassLists();
