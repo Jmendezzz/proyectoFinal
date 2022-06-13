@@ -121,6 +121,7 @@ h2{
     width: 100%;
     background-color: black;
     margin-top: 80px;
+    
 }
 .icono-redes{
     width: 30px;
@@ -134,4 +135,5 @@ h2{
 }
 .active{
     color: white;
+    padding: 30px;
 }

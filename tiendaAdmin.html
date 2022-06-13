@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <link rel="shortcut icon" href="images/i.png">
+    <link href="https://fonts.googleapis.com/css2?family=Play&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tienda.css">
+</head>
+<body>
+    <div class="nav">
+        <img src="images/i.png" class="imagenes-logo-quindio">
+
+        <div class="lista">
+            <a href="index.html#historia">
+                <li>Historia</li>
+            </a>
+            <a href="hinchada.html">
+                <li>Hinchada</li>
+            </a>
+            <a href="tienda.html">
+                <li>Tienda</li>
+            </a>
+            
+            <li>Noticias</li>
+            <a href="jugadores.html">
+                <li>Jugadores</li>
+            </a>
+
+            <li>Momentos</li>
+        </div>
+
+        <a href="login.html"><img src="images/icon.png" class="icon"></a>
+    </div>
+    <div class="body">
+        <div class="main-content">
+            <h2>TIENDA</h2>
+            <h2 class="active-h2">
+                CREAR PRODUCTO
+            </h2>
+            <div class="row">
+                <img class="imagenes" src="images/herrmienta.png">
+                <div class="main-content creacion">
+                    <select id="categoria">
+                        <option selected disabled>Seleccione la categoría</option>
+                        <option>Uniforme</option>
+                        <option>Ropa</option>
+                        <option>Accesorios</option>
+                    </select>
+                    <input type="text" placeholder="URL de la imagen" id="url-imagen" class="input">
+                    <input type="text" placeholder="Nombre del producto" id="nombre-producto" class="input">
+                    <input type="number" placeholder="Cantidad disponible" id="cantidad-producto" class="input">
+                    <input type="number" placeholder="Precio del producto" id="precio-producto" class="input">
+                    <button id="send-button">Crear</button>
+                </div>
+            </div>
+            <h2>PREVISUALIZACIÓN</h2>
+            <div class="row" id="container-productos"></div>
+        </div>
+    </div>
+    <script src="js/tienda.js"></script>
+</body>
+</html>
