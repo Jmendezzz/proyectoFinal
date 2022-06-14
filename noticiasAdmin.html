@@ -14,7 +14,7 @@
         <img src="images/i.png" class="imagenes-logo-quindio">
 
         <div class="lista">
-            <a href="indexAdmin.html#historia">
+            <a href="indexAdmin#historia.html">
                 <li>Historia</li>
             </a>
             <a href="hinchadaAdmin.html">
@@ -24,10 +24,8 @@
                 <li>Tienda</li>
             </a>
             
-            <a href="noticiasAdmin.html">
-                <li>Noticias</li>
-            </a>
-            <a href="jugadores.html">
+            <li>Noticias</li>
+            <a href="jugadoresAdmin.html">
                 <li>Jugadores</li>
             </a>
 
@@ -38,23 +36,17 @@
     </div>
     <div class="body">
         <div class="main-content">
-            <h2>TIENDA</h2>
+            <h2>NOTICIAS</h2>
             <h2 class="active-h2">
-                CREAR PRODUCTO
+                CREAR NOTICIA
             </h2>
             <div class="row">
-                <img class="imagenes" src="images/herrmienta.png">
+                <img class="imagenes" src="images/noticias.png">
                 <div class="main-content creacion">
-                    <select id="categoria">
-                        <option selected disabled>Seleccione la categoría</option>
-                        <option>Uniforme</option>
-                        <option>Ropa</option>
-                        <option>Accesorios</option>
-                    </select>
                     <input type="text" placeholder="URL de la imagen" id="url-imagen" class="input">
-                    <input type="text" placeholder="Nombre del producto" id="nombre-producto" class="input">
-                    <input type="number" placeholder="Cantidad disponible" id="cantidad-producto" class="input">
-                    <input type="number" placeholder="Precio del producto" id="precio-producto" class="input">
+                    <input type="text" placeholder="Titulo de la noticia" id="titulo-noticia" class="input">
+                    <textarea  id="cuerpo-noticia" cols="40" rows="10" placeholder="Cuerpo de la noticia" class="input"></textarea>
+                    <input type="date"  id="fecha-noticia" class="input">
                     <button id="send-button">Crear</button>
                 </div>
             </div>
@@ -62,6 +54,6 @@
             <div class="padre-container-productos" id="container-productos"></div>
         </div>
     </div>
-    <script src="js/tienda.js"></script>
+    <script src="js/noticias.js"></script>
 </body>
 </html>
