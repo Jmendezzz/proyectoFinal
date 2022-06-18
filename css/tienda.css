@@ -171,12 +171,65 @@ button:hover{
     align-items: center;
     width: 80vw;
     flex-wrap: wrap;
+    margin: 50px;
 }
-textarea{
+textarea{              
     border: none;
     resize: none;
     border-bottom: 3px solid green;
 }
 textarea:focus{
     outline: none;
+}
+.none{
+    display: none;
+}
+.vista-previa{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.vista-previa img{
+    width: 400px;
+    height: 400px;
+}
+
+.vista-previa-lista{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    font-size: 30px;
+}
+.vista-previa-lista li{
+    margin: 30px;
+}
+.vista-previa-lista button{
+    width: 200px;
+}
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    background-color: black;
+    margin-top: 80px;
+    
+}
+.icono-redes{
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    transition: all 1s;
+}
+.icono-redes:hover{
+    transform: scale(1.2);
+    cursor:pointer;
+}
+.active{
+    color: white;
+    padding: 30px;
 }
