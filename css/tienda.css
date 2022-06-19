@@ -129,8 +129,8 @@ button:hover{
     border-bottom:2px solid red;
 }
 .container-productos img{
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
 }
 .container-productos{
     display: flex;
@@ -138,7 +138,7 @@ button:hover{
     justify-content: center;
     align-items: center;
     list-style: none;
-    margin: 20px;
+    width: 400px;
 }
 .container-productos li{
     display: flex;
@@ -169,7 +169,7 @@ button:hover{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 80vw;
+    width: 90vw;
     flex-wrap: wrap;
     margin: 50px;
 }
@@ -192,7 +192,7 @@ textarea:focus{
 }
 .vista-previa img{
     width: 400px;
-    height: 400px;
+    height: 500px;
 }
 
 .vista-previa-lista{
@@ -232,4 +232,64 @@ textarea:focus{
 .active{
     color: white;
     padding: 30px;
+}
+.nav-tienda img{
+    width: 50px;
+    height: 50px;
+    transition: all 0.5s;
+   
+}
+.nav-tienda{
+    align-items: center;
+    justify-content: space-evenly;
+    width: 90vw;
+   
+}
+#contador-compras-container{
+    transition: all .5s;
+}
+#contador-compras-container:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}   
+.contador{
+    display: flex;
+    flex-direction: row;
+    align-items:flex-end;
+}
+#contador-compras{
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    overflow: 9000;
+    width: 20px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    right: 17px;
+}
+.imagenes-bolsa{
+    width: 200px;
+    height: 200px;
+
+}
+.div-bolsa{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.bolsa-item{
+    display: flex;
+    flex-direction: row;
+    width: 50vw;
+    justify-content: space-evenly;
+    align-items: center;
+    outline: 1px solid lightgrey;
+    list-style: none;
+    
+}
+.x-icon{
+    width: 30px;
+    height: 30px;
 }
