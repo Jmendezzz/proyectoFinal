@@ -181,9 +181,7 @@ textarea{
 textarea:focus{
     outline: none;
 }
-.none{
-    display: none;
-}
+
 .vista-previa{
     display: flex;
     flex-direction: row;
@@ -287,9 +285,58 @@ textarea:focus{
     align-items: center;
     outline: 1px solid lightgrey;
     list-style: none;
-    
+    font-size: 20px;
 }
+.bolsa-item li{
+    margin: 20px;
+}
+
 .x-icon{
     width: 30px;
     height: 30px;
+}
+.div-bolsa p{
+    font-size: 30px;
+}
+.none{
+    display: none;
+}
+.container-formulario{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 80vw;
+}
+.container-formulario img{
+    width: 200px;
+    height: 200px;
+}
+.container-inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+}
+.container-inputs  input{
+    width: 100%;
+}
+.container-inputs p{
+    margin-top: 40px;
+}
+.container-inputs button{
+    background-color: green;
+    color: white;
+}
+.container-inputs button:hover{
+    background-color: white;
+    color: black;
+}
+.botones{
+    width: 200px;
+}
+.container-exitoso{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
