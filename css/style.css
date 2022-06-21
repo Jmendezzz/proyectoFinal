@@ -101,6 +101,7 @@ h2{
     flex-direction: column;
     justify-content: center;
     margin: 20px;
+    transition: all 1s;
 }
 .card img{
     width: 300px;
@@ -136,4 +137,18 @@ h2{
 .active{
     color: white;
     padding: 30px;
+}
+.card:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+    -webkit-box-shadow: -1px 0px 34px 4px #F9FF42; 
+    box-shadow: -1px 0px 34px 4px #F9FF42;
+}
+.h2-active{
+    color: black;
+    font-size: 50px;
+}
+.momentos img{
+    width: 1000px;
+    height: 500px;
 }

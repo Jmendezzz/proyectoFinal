@@ -74,11 +74,13 @@ h2{
     margin: 5px;
     margin-top: 20px;
     width: 80vw;
+    transition: all .5s;
 }
 .active h2{
     color: black;
     font-size: 40px;
 }
+
 .active img{
     width: 270px;
     height: 400px;

@@ -7,8 +7,9 @@ const printProductos = () => {
     arrayProductos.forEach((object, index) => {
         let div = document.createElement("DIV");
         div.innerHTML = "";
-        div.setAttribute("class", "container-productos")
-        document.getElementById("titulo").innerHTML="TIENDA";
+        div.setAttribute("class", "container-productos");
+
+        document.getElementById("titulo").innerHTML = "TIENDA";
         for (let i = 0; i < 5; i++) {
             let li = document.createElement("LI");
             switch (i) {
@@ -44,6 +45,7 @@ const printProductos = () => {
                     break;
             }
         }
+        
         containerProductos.appendChild(div);
     })
 }
@@ -129,11 +131,12 @@ const editarProducto = (button) => {
                     })
                 case 4:
                     let imgBack = document.createElement("IMG");
+                    imgBack.setAttribute("class","img-back");
                     imgBack.setAttribute("src", "https://cdn.icon-icons.com/icons2/362/PNG/512/Go-back_36760.png");
                     imgBack.style.width = "70px";
                     imgBack.style.height = "50px";
                     imgBack.addEventListener("click", () => {
-                        printProductos();
+                        getProductos();
                     })
                     div.appendChild(imgBack);
                     break;
@@ -154,7 +157,7 @@ const inputList = (p, input, text, type, div, placeholder) => {
     div.appendChild(p);
     input.setAttribute("type", type);
     input.setAttribute("placeholder", placeholder);
-    input.setAttribute("class","input");
+    input.setAttribute("class", "input");
     div.appendChild(input);
 }
 // imprimir la facturacion
@@ -192,10 +195,10 @@ const printFacturacion = () => {
                 let buttonConfirmar = document.createElement("BUTTON");
                 buttonConfirmar.innerHTML = "Confirmar";
                 divInputs.appendChild(buttonConfirmar);
-                buttonConfirmar.addEventListener("click",()=>{
-                    if(confirm("Estás seguro de finalizar la compra")){
+                buttonConfirmar.addEventListener("click", () => {
+                    if (confirm("Estás seguro de finalizar la compra")) {
                         finalizarCompra();
-                    } 
+                    }
                 })
                 break;
         }
@@ -221,19 +224,21 @@ const comprobarDatos = () => {
         return false;
     } else return true;
 }
-const finalizarCompra = ()=>{
-    if(comprobarDatos()){
-        let arregloID = arrayCompras.filter(object=>object.id);
+const finalizarCompra = () => {
+    if (comprobarDatos()) {
+        let arregloID = arrayCompras.filter(object => object.id);
         console.log(arregloID);
-        for(let i in arregloID){
-            setClassLists();
-            putProductoAPI(arregloID[i].id,arrayProductos[i].cantidad-1);
-            clearInputs();
-            arrayCompras.splice(0,arrayCompras.length);
-            document.getElementById("contador-compras").innerHTML = arrayCompras.length;
+        setClassLists();
+        clearInputs();
+        for (let i in arregloID) {
+            let cantidad = parseInt(arregloID[i].cantidad);
+            cantidad-=1;
+            putProductoAPI(arregloID[i].id,cantidad);   
         }
-        
-    }else{
+        compraExitosa();
+        arrayCompras.splice(0, arrayCompras.length);
+        document.getElementById("contador-compras").innerHTML = arrayCompras.length;
+    } else {
         setClassLists();
     }
 }
@@ -255,22 +260,66 @@ const setClassLists = () => {
     }
 }
 
-const compraExitosa = ()=>{
+const compraExitosa = () => {
     let divPadre = document.getElementById("container-productos");
-    divPadre.innerHTML="";
-    let div = document.createElement("DIV");
-    div.setAttribute("class","container-exitoso");
+    divPadre.innerHTML = "";
+    let divExitoso = document.createElement("DIV");
+    divExitoso.setAttribute("class", "container-exitoso");
     let img = document.createElement("IMG");
-    div.appendChild(img);
+    img.setAttribute("src","http://assets.stickpng.com/thumbs/5aa78e387603fc558cffbf1d.png");
     let p = document.createElement("P");
-    p.innerHTML="Compra exitosa!";
-    div.appendChild(p);
-    let p2= document.createElement("P");
-    p2.innerHTML="Detalles de la compra:";
-    div.appendChild(p2);
-    arrayCompras.forEach(objec=>{
+    p.innerHTML = "Compra exitosa!";
+    divExitoso.appendChild(p);
+    divExitoso.appendChild(img);
+    let p2 = document.createElement("P");
+    p2.innerHTML = "Detalles de la compra:";
+    divExitoso.appendChild(p2);
+    arrayCompras.forEach(object => {
+        let div = document.createElement("DIV");
+        div.setAttribute("class", "bolsa-item");
+        for (let i = 0; i < 3; i++) {
+            switch (i) {
+                case 0:
+                    let img = document.createElement("IMG");
+                    img.setAttribute("src", `${object.url}`);
+                    img.setAttribute("class", "imagenes-bolsa");
+                    div.appendChild(img);
+                    break;
+                case 1:
+                    let divItems = document.createElement("DIV");
+                    divItems.setAttribute("class", "vista-previa-");
+
+                    divItems.innerHTML = "";
+                    for (let j = 0; j < 3; j++) {
+                        let li = document.createElement("LI");
+                        if (j == 0) {
+                            li.innerHTML = `Nombre: ${object.nombreProducto}`;
+                            divItems.appendChild(li);
+                        }
+                        else if (j == 1) {
+                            li.innerHTML = "Cantidad: 1";
+                            divItems.appendChild(li);
+                        }
+                        else {
+                            li.innerHTML = `Precio ${object.precio}$`;
+                            divItems.appendChild(li);
+                        }
+                    }
+                    div.appendChild(divItems);
+                }
+                
+
+            }
+            divExitoso.appendChild(div);
+        })
         
-    })
+        let btn = document.createElement("BUTTON");
+        btn.innerHTML="Volver atrás";
+        btn.addEventListener("click",()=>{
+            getProductos();
+        })
+        divExitoso.appendChild(btn);
+        divPadre.appendChild(divExitoso);
 }
 const deleteProducto = (button) => {
     button.addEventListener("click", () => {
@@ -356,14 +405,14 @@ const printBolsa = () => {
         })
         backButton.addEventListener("click", () => {
             document.getElementById("titulo").innerHTML = "TIENDA";
-            printProductos();
+            getProductos();
         })
         divBolsa.appendChild(backButton);
         containerProductos.appendChild(divBolsa);
     } else {
         alert("Aquí no hay nada");
-        printProductos()
-        
+        getProductos();
+
     }
 
 }

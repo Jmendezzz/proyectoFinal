@@ -139,6 +139,7 @@ button:hover{
     align-items: center;
     list-style: none;
     width: 400px;
+    transition: all .5s;
 }
 .container-productos li{
     display: flex;
@@ -149,6 +150,9 @@ button:hover{
     font-size: 30px;
     margin: 5px;
     
+}
+.container-productos:hover{
+    transform: scale(1.05);
 }
 .botones-compra{
     background-color: green;
@@ -339,4 +343,12 @@ textarea:focus{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.container-exitoso p{
+    font-size: 60px;
+    margin: 10px;
+}
+.container-exitoso img{
+    width: 200px;
+    height: 200px;
 }
