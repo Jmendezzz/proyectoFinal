@@ -243,7 +243,7 @@ textarea:focus{
 }
 .nav-tienda{
     align-items: center;
-    justify-content: space-evenly;
+    justify-content:space-evenly;
     width: 90vw;
    
 }
@@ -351,4 +351,24 @@ textarea:focus{
 .container-exitoso img{
     width: 200px;
     height: 200px;
+}
+.buscador{
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    
+}
+.buscador input {
+    width: 200px;
+    border-bottom: 1px solid black;
+}
+.buscador img {
+    width: 30px;
+    height: 30px;
+    transition: all .5s;
+}
+.buscador img:hover{
+    cursor: pointer;
+    transform: scale(1.09);
 }

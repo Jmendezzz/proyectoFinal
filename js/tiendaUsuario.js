@@ -45,13 +45,12 @@ const printProductos = () => {
                     break;
             }
         }
-        
+
         containerProductos.appendChild(div);
     })
 }
-
 const getInfo = async () => {
-    response = await fetch(urlApi);
+    const response = await fetch(urlApi);
     console.log(response);
     return response.json();
 }
@@ -93,64 +92,65 @@ const editarProducto = (button) => {
     button.addEventListener("click", () => {
         let idButton = button.id;
         idButton = parseInt(idButton);
-        idButton = idButton + 1;
-        console.log(idButton);
-        let img = document.createElement("IMG");
-        img.setAttribute("src", `${arrayProductos[idButton - 1].url}`);
-        let divPadre = document.createElement("DIV");
-        divPadre.setAttribute("class", "vista-previa")
-        let div = document.createElement("DIV");
-        div.setAttribute("class", "vista-previa-lista");
-        div.setAttribute("id", `div-${idButton}`);
-        for (let i = 0; i < 4; i++) {
-            let li = document.createElement("LI");
-            switch (i) {
-
-                case 0:
-                    li.innerHTML = `${arrayProductos[idButton - 1].nombreProducto}`;
-                    li.style.color = "black";
-                    div.appendChild(li);
-                    break;
-                case 1:
-
-                    li.innerHTML = `Unidades disponibles: ${arrayProductos[idButton - 1].cantidad}`;
-                    li.style.color = "grey";
-                    li.style.fontSize = "20px";
-                    div.appendChild(li);
-                    break;
-                case 2:
-                    li.innerHTML = `Precio:${arrayProductos[idButton - 1].precio}$`;
-                    div.appendChild(li);
-                    break;
-                case 3:
-                    let botonCarro = document.createElement("BUTTON");
-                    botonCarro.innerHTML = "Añadir al carro"
-                    div.appendChild(botonCarro);
-                    botonCarro.addEventListener("click", () => {
-                        botonCarroFunction(idButton - 1);
-                    })
-                case 4:
-                    let imgBack = document.createElement("IMG");
-                    imgBack.setAttribute("class","img-back");
-                    imgBack.setAttribute("src", "https://cdn.icon-icons.com/icons2/362/PNG/512/Go-back_36760.png");
-                    imgBack.style.width = "70px";
-                    imgBack.style.height = "50px";
-                    imgBack.addEventListener("click", () => {
-                        getProductos();
-                    })
-                    div.appendChild(imgBack);
-                    break;
-            }
-            divPadre.appendChild(img);
-            divPadre.appendChild(div);
-            containerProductos.appendChild(divPadre);
-        }
-
+        printOneProduct(arrayProductos[idButton], idButton);
     }
 
     )
 };
+//Imprimir un solo producto seleccionado
+const printOneProduct = (object, id) => {
+    containerProductos.innerHTML="";
+    let img = document.createElement("IMG");
+    img.setAttribute("src", `${object.url}`);
+    let divPadre = document.createElement("DIV");
+    divPadre.setAttribute("class", "vista-previa");
+    let div = document.createElement("DIV");
+    div.setAttribute("class", "vista-previa-lista");
+    div.setAttribute("id", `div-${id}`);
+    for (let i = 0; i < 4; i++) {
+        let li = document.createElement("LI");
+        switch (i) {
 
+            case 0:
+                li.innerHTML = `${object.nombreProducto}`;
+                li.style.color = "black";
+                div.appendChild(li);
+                break;
+            case 1:
+
+                li.innerHTML = `Unidades disponibles: ${object.cantidad}`;
+                li.style.color = "grey";
+                li.style.fontSize = "20px";
+                div.appendChild(li);
+                break;
+            case 2:
+                li.innerHTML = `Precio:${object.precio}$`;
+                div.appendChild(li);
+                break;
+            case 3:
+                let botonCarro = document.createElement("BUTTON");
+                botonCarro.innerHTML = "Añadir al carro"
+                div.appendChild(botonCarro);
+                botonCarro.addEventListener("click", () => {
+                    botonCarroFunction(id);
+                })
+            case 4:
+                let imgBack = document.createElement("IMG");
+                imgBack.setAttribute("class", "img-back");
+                imgBack.setAttribute("src", "https://i.postimg.cc/k5cyLD5P/Go-back-icon.png");
+                imgBack.style.width = "70px";
+                imgBack.style.height = "50px";
+                imgBack.addEventListener("click", () => {
+                    getProductos();
+                })
+                div.appendChild(imgBack);
+                break;
+        }
+        divPadre.appendChild(img);
+        divPadre.appendChild(div);
+        containerProductos.appendChild(divPadre);
+    }
+}
 //constructor de inputs + p 
 const inputList = (p, input, text, type, div, placeholder) => {
     p.innerHTML = text;
@@ -196,7 +196,7 @@ const printFacturacion = () => {
                 buttonConfirmar.innerHTML = "Confirmar";
                 divInputs.appendChild(buttonConfirmar);
                 buttonConfirmar.addEventListener("click", () => {
-                    if (confirm("Estás seguro de finalizar la compra")) {
+                    if (confirm("Estás seguro de finalizar la compra?")) {
                         finalizarCompra();
                     }
                 })
@@ -232,8 +232,10 @@ const finalizarCompra = () => {
         clearInputs();
         for (let i in arregloID) {
             let cantidad = parseInt(arregloID[i].cantidad);
-            cantidad-=1;
-            putProductoAPI(arregloID[i].id,cantidad);   
+            cantidad -= 1;
+            if (cantidad == 0) putProductoAPI(arregloID[i].id, "No hay existencias")
+            else putProductoAPI(arregloID[i].id, cantidad);
+
         }
         compraExitosa();
         arrayCompras.splice(0, arrayCompras.length);
@@ -243,7 +245,7 @@ const finalizarCompra = () => {
     }
 }
 let contadorCompras = document.getElementById("contador-compras");
-arrayCompras = [];
+let arrayCompras = [];
 const botonCarroFunction = (id) => {
     arrayCompras.push(arrayProductos[id]);
     contadorCompras.innerHTML = arrayCompras.length;
@@ -266,7 +268,7 @@ const compraExitosa = () => {
     let divExitoso = document.createElement("DIV");
     divExitoso.setAttribute("class", "container-exitoso");
     let img = document.createElement("IMG");
-    img.setAttribute("src","http://assets.stickpng.com/thumbs/5aa78e387603fc558cffbf1d.png");
+    img.setAttribute("src", "http://assets.stickpng.com/thumbs/5aa78e387603fc558cffbf1d.png");
     let p = document.createElement("P");
     p.innerHTML = "Compra exitosa!";
     divExitoso.appendChild(p);
@@ -306,20 +308,20 @@ const compraExitosa = () => {
                         }
                     }
                     div.appendChild(divItems);
-                }
-                
-
             }
-            divExitoso.appendChild(div);
-        })
-        
-        let btn = document.createElement("BUTTON");
-        btn.innerHTML="Volver atrás";
-        btn.addEventListener("click",()=>{
-            getProductos();
-        })
-        divExitoso.appendChild(btn);
-        divPadre.appendChild(divExitoso);
+
+
+        }
+        divExitoso.appendChild(div);
+    })
+
+    let btn = document.createElement("BUTTON");
+    btn.innerHTML = "Volver atrás";
+    btn.addEventListener("click", () => {
+        getProductos();
+    })
+    divExitoso.appendChild(btn);
+    divPadre.appendChild(divExitoso);
 }
 const deleteProducto = (button) => {
     button.addEventListener("click", () => {
@@ -417,6 +419,20 @@ const printBolsa = () => {
 
 }
 
+const inputBusqueda = document.getElementById("input-buscador");
+const botonBusqueda = document.getElementById("boton-busqueda");
+botonBusqueda.addEventListener("click", () => {
+    let productoBuscado = inputBusqueda.value;
+    productoBuscado.toUpperCase();
+    let respuestaBusqueda = arrayProductos.find(object => object.nombreProducto == productoBuscado);
+    console.log(respuestaBusqueda + "elemento buscado");
+    console.log(respuestaBusqueda.nombreProducto);
+    let id = arrayProductos.findIndex(object => object.nombreProducto == respuestaBusqueda.nombreProducto);
+    console.log(id + "id del elemento buscado");
+    if (respuestaBusqueda != undefined) {
+        printOneProduct(respuestaBusqueda, id);
+    } else alert("El producto no sé encontró");
+})
 
 contadorComprasContainer.addEventListener("click", () => {
     printBolsa();
