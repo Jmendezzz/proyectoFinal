@@ -231,10 +231,10 @@ const finalizarCompra = () => {
         setClassLists();
         clearInputs();
         for (let i in arregloID) {
-            let cantidad = parseInt(arregloID[i].cantidad);
-            cantidad -= 1;
-            if (cantidad == 0) putProductoAPI(arregloID[i].id, "No hay existencias")
-            else putProductoAPI(arregloID[i].id, cantidad);
+            arregloID[i].cantidad = parseInt(arregloID[i].cantidad)-1;
+            console.log(arregloID[i].cantidad);
+            console.log(arregloID);
+            putProductoAPI(arregloID[i].id, arregloID[i].cantidad);
 
         }
         compraExitosa();
@@ -268,7 +268,7 @@ const compraExitosa = () => {
     let divExitoso = document.createElement("DIV");
     divExitoso.setAttribute("class", "container-exitoso");
     let img = document.createElement("IMG");
-    img.setAttribute("src", "http://assets.stickpng.com/thumbs/5aa78e387603fc558cffbf1d.png");
+    img.setAttribute("src", "https://i.postimg.cc/P5Lt7vRq/5aa78e387603fc558cffbf1d.png");
     let p = document.createElement("P");
     p.innerHTML = "Compra exitosa!";
     divExitoso.appendChild(p);
