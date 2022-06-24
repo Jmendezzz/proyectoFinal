@@ -224,7 +224,7 @@ const editarProducto = (button) => {
                     break;
                 case 5:
                     let imgBack = document.createElement("IMG");
-                    imgBack.setAttribute("src", "https://cdn.icon-icons.com/icons2/362/PNG/512/Go-back_36760.png");
+                    imgBack.setAttribute("src", "https://i.postimg.cc/k5cyLD5P/Go-back-icon.png");
                     imgBack.style.width = "70px";
                     imgBack.style.height = "50px";
                     imgBack.addEventListener("click", () => {
